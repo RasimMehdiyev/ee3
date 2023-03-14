@@ -48,20 +48,21 @@ def createDummyData(request):
 
 @api_view(['POST'])
 def checkKeyPadCode(request,id):
-    data = request.data
-    code = ""
-    # print(type(data['keypadCode']))
-    if type(data['keypadCode']) == list:
-        # transform to string
-        print("transforming to string")
-        code = ''.join(data['keypadCode'])
-    else:
-        code = data['keypadCode']
-    print(code)
-    module = Modules.objects.get(id=id)
-    if module.keypadCode == code:
-        module.status = True
-        module.save()
-        return Response(1)
-    else:
-        return Response(0)
+    if request.method == 'POST':
+        data = request.data
+        code = ""
+        # print(type(data['keypadCode']))
+        if type(data['keypadCode']) == list:
+            # transform to string
+            code = ''.join(data['keypadCode'])
+        else:
+            code = data['keypadCode']
+        print(code)
+        module = Modules.objects.get(id=id)
+        if module.keypadCode == code:
+            module.status = True
+            module.save()
+            return Response(1)
+        else:
+            return Response(0)
+    
