@@ -46,7 +46,7 @@ def createDummyData(request):
     return Response(serializer.data)
 
 
-@api_view(['POST'])
+@api_view(['GET'])
 def checkKeyPadCode(request,id,keypadCode):
     if request.method == 'GET':
         # data = request.data
