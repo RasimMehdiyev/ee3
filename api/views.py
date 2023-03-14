@@ -47,16 +47,16 @@ def createDummyData(request):
 
 
 @api_view(['POST'])
-def checkKeyPadCode(request,id):
-    if request.method == 'POST':
-        data = request.data
+def checkKeyPadCode(request,id,keypadCode):
+    if request.method == 'GET':
+        # data = request.data
         code = ""
         # print(type(data['keypadCode']))
-        if type(data['keypadCode']) == list:
+        if type(keypadCode) == list:
             # transform to string
-            code = ''.join(data['keypadCode'])
+            code = ''.join(keypadCode)
         else:
-            code = data['keypadCode']
+            code = keypadCode
         print(code)
         module = Modules.objects.get(id=id)
         if module.keypadCode == code:
