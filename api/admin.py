@@ -21,7 +21,7 @@ class HintsAdmin(admin.ModelAdmin):
 admin.site.register(Hints, HintsAdmin)
 
 class ModulesAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description', 'status')
+    list_display = ('id','name', 'description', 'status','keypadCode',)
 admin.site.register(Modules, ModulesAdmin)
 
 class DummyAdmin(admin.ModelAdmin):

@@ -56,7 +56,7 @@ class Modules(models.Model):
     description = models.TextField(blank=True, null=True)
     status = models.BooleanField(default=False, blank=True, null=True)
     hint = models.ManyToManyField('Hints', blank=True, null=True)
-
+    keypadCode = models.CharField(max_length=100, blank=True, null=True)
     def __str__(self):
         return self.name
 

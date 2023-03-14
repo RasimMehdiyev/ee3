@@ -8,4 +8,5 @@ urlpatterns = [
     path('get_dummy/', getAllDummyData, name='get_dummy'),
     path('get_dummy/<str:id>/', getDummyData, name='get_dummy'),
     path('create_dummy/', createDummyData, name='create_dummy'),
+    path('send_code/<int:id>/', checkKeyPadCode, name='send_code'),
 ]
