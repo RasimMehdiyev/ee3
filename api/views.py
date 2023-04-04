@@ -13,6 +13,15 @@ def getLeaderboard(request):
     serializer = TeamsSerializer(teams, many=True)
     return Response(serializer.data)
 
+@api_view(['GET'])
+def updateLeaderboard(request, teamID, points):
+    team = Teams.objects.get(id=teamID)
+    team.points = points
+    team.save()
+    teams = Teams.objects.all()
+    serializer = TeamsSerializer(teams, many=True)
+    return Response(serializer.data)
+
 
 @api_view(['GET'])
 def getGameStats(request, id):
