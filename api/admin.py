@@ -28,5 +28,8 @@ class DummyAdmin(admin.ModelAdmin):
     list_display = ('randomString','randomNumber','randomBoolean')
 admin.site.register(DummyModel, DummyAdmin)
 
+class TimerModuleAdmin(admin.ModelAdmin):
+    list_display = ('id','startTimer')
+admin.site.register(TimerModule, TimerModuleAdmin)
 
 

@@ -75,3 +75,22 @@ def checkKeyPadCode(request,id,keypadCode):
         else:
             return Response(0)
     
+@api_view(['GET'])
+def startTimer(request):
+    timer = TimerModule.objects.get(id=1)
+    if timer.startTimer == True:
+        return Response(1)
+    else:
+        return Response(0)
+    
+@api_view(['GET'])
+def setModuleStatus(request, id , status):
+    if request.method == 'GET':
+        module = Modules.objects.get(id=id)
+        if status == 1:
+            module.status = True
+        else:
+            module.status = False
+        module.save()
+        return Response({'status': module.status,'message': 'Module status updated successfully to ' + str(module.status) + ''})
+    

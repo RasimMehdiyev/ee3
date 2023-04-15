@@ -68,3 +68,7 @@ class DummyModel(models.Model):
     def __str__(self):
         return self.randomString
 
+class TimerModule(models.Model):
+    startTimer = models.BooleanField(default=False, blank=True, null=True)
+    # def __str__(self):
+    #     return self.startTimer
