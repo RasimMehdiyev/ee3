@@ -11,5 +11,5 @@ urlpatterns = [
     path('create_dummy/', createDummyData, name='create_dummy'),
     path('send_code/<int:id>/<str:keypadCode>/', checkKeyPadCode, name='send_code'),
     path('start-timer/' , startTimer , name='start-timer'),
-    path('set-status/<int:id>/<str:status>/', setModuleStatus, name='set-status'),
+    path('set-status/<int:id>/<int:status>/', setModuleStatus, name='set-status'),
 ]
