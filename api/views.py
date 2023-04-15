@@ -92,5 +92,6 @@ def setModuleStatus(request, id , status):
         else:
             module.status = False
         module.save()
-        return Response({'status': module.status,'message': 'Module status updated successfully to ' + str(module.status) + ''})
+        moduleName = module.name
+        return Response({'status': module.status,'message': '{}\'s status updated successfully to '.format(moduleName) + str(module.status) + ''})
     
