@@ -12,4 +12,5 @@ urlpatterns = [
     path('send_code/<int:id>/<str:keypadCode>/', checkKeyPadCode, name='send_code'),
     path('start-timer/' , startTimer , name='start-timer'),
     path('set-status/<int:id>/<int:status>/', setModuleStatus, name='set-status'),
+    path('teams/', teams, name='teams'),
 ]

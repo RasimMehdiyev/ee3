@@ -95,3 +95,30 @@ def setModuleStatus(request, id , status):
         moduleName = module.name
         return Response({'status': module.status,'message': '{}\'s status updated successfully to '.format(moduleName) + str(module.status) + ''})
     
+@api_view(['GET', 'POST'])
+def teams(request):
+    if request.method == 'GET':
+        teams = Teams.objects.all()
+        serializer = TeamsSerializer(teams, many=True)
+        return Response(serializer.data)
+    elif request.method == 'POST':
+        # first create members model using MembersSerializer
+        serializer = MembersSerializer(data=request.data['members'], many=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+
+        # take members id's from serializer.data
+        members_local = []
+        for member in serializer.data:
+            members_local.append(member['id'])
+        print(members_local)
+
+        data = request.data
+        team = Teams.objects.create(
+            name = data['name'],
+            points = data['points'],
+            # add members id's to team
+        )
+        team.members.add(*members_local)
+        serializer = TeamsSerializer(team, many=False)
+        return Response(serializer.data)
