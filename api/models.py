@@ -18,6 +18,10 @@ class Teams(models.Model):
     points = models.IntegerField(blank=True, null=True)
     members = models.ManyToManyField('Members', blank=True, null=True)
 
+    # order by points
+    class Meta:
+        ordering = ['-points']
+
     #team size for admin panel
     def team_size(self):
         return self.members.count()
