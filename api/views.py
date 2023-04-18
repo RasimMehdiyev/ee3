@@ -9,7 +9,8 @@ from rest_framework.response import Response
 # Create your views here.
 @api_view(['GET'])
 def getLeaderboard(request):
-    teams = Teams.objects.all()
+    # filter based on points
+    teams = Teams.objects.all().order_by('-points')
     serializer = TeamsSerializer(teams, many=True)
     return Response(serializer.data)
 

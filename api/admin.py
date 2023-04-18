@@ -32,4 +32,3 @@ class TimerModuleAdmin(admin.ModelAdmin):
     list_display = ('id','startTimer')
 admin.site.register(TimerModule, TimerModuleAdmin)
 
-
